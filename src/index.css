@@ -74,6 +74,9 @@
     @apply bg-[#1e3a8a] text-foreground; /* Updated background color to dark blue */
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply text-white; /* Ensure title headers are white */
+    @apply text-[#4B0082]; /* Ensure title headers are dark purple */
+  }
+  footer {
+    @apply border-t-2 border-white; /* Add white border to footer */
   }
 }
