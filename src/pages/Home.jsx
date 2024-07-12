@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Home, Inbox, QrCode, Transactions, User } from "lucide-react";
+import { Home as HomeIcon, Inbox, QrCode, Transactions, User } from "lucide-react";
 
 const Home = () => {
   const transactions = [
@@ -57,7 +57,7 @@ const Home = () => {
       <footer className="sticky bottom-0 bg-white p-4 shadow-lg">
         <div className="flex justify-around">
           <Button variant="ghost" className="flex flex-col items-center">
-            <Home className="h-6 w-6" />
+            <HomeIcon className="h-6 w-6" />
             <span className="text-xs">Home</span>
           </Button>
           <Button variant="ghost" className="flex flex-col items-center">
