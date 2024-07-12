@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
-import { toast } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 
 const AddFunds = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -12,7 +12,7 @@ const AddFunds = () => {
 
   const onSubmit = data => {
     console.log(data);
-    toast.success('Funds added successfully!');
+    Toaster.success('Funds added successfully!');
   };
 
   return (
