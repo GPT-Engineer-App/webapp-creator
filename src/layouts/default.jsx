@@ -8,7 +8,7 @@ const Layout = () => {
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-[#1e3a8a] px-4 md:px-6 justify-between shadow-lg shadow-blue-500/50">
         <MobileSidebar />
         <div className="flex-grow flex justify-center">
-          <img src="/images/header-logo.png" alt="Header Logo" className="h-12" />
+          <img src="/images/header-logo.png" alt="Header Logo" className="h-12 w-auto max-w-full" />
         </div>
       </header>
       <div className="flex flex-grow">
