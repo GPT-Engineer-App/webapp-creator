@@ -15,21 +15,37 @@ const ThreeDAnimation = () => {
     camera.position.z = 5;
 
     // Renderer
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setClearColor(0x000000, 0); // Set background to transparent
     mount.appendChild(renderer.domElement);
 
-    // Geometry
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
+    // Geometry and Materials for Payment Elements
+    const geometries = [
+      new THREE.BoxGeometry(), // Credit Card
+      new THREE.CylinderGeometry(0.5, 0.5, 0.1, 32), // Coin
+      new THREE.SphereGeometry(0.5, 32, 32), // Dollar Sign
+    ];
+
+    const materials = [
+      new THREE.MeshBasicMaterial({ color: 0x0000ff }), // Blue for Credit Card
+      new THREE.MeshBasicMaterial({ color: 0xffff00 }), // Yellow for Coin
+      new THREE.MeshBasicMaterial({ color: 0x00ff00 }), // Green for Dollar Sign
+    ];
+
+    const paymentElements = geometries.map((geometry, index) => {
+      const mesh = new THREE.Mesh(geometry, materials[index]);
+      scene.add(mesh);
+      return mesh;
+    });
 
     // Animation
     const animate = () => {
       requestAnimationFrame(animate);
-      cube.rotation.x += 0.01;
-      cube.rotation.y += 0.01;
+      paymentElements.forEach((element, index) => {
+        element.rotation.x += 0.01 * (index + 1);
+        element.rotation.y += 0.01 * (index + 1);
+      });
       renderer.render(scene, camera);
     };
 
