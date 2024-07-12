@@ -113,4 +113,5 @@ const SidebarNavLink = ({ to, children }) => (
   </NavLink>
 );
 
+export { Sidebar, MobileSidebar, UserDropdown };
 export default Layout;
