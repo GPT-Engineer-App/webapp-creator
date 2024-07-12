@@ -13,7 +13,7 @@ const Home = () => {
   return (
     <div className="p-4 space-y-4 flex flex-col min-h-screen">
       <header className="mb-4">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
+        <h1 className="text-4xl font-bold">Dashboard</h1>
         <Card className="bg-blue-500 text-white p-4 rounded-lg shadow-lg">
           <CardHeader>
             <CardTitle className="text-lg">Your Balance</CardTitle>
