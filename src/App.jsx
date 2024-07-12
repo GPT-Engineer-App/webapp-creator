@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home as HomeIcon, List, User, Settings as SettingsIcon, PlusCircle, MinusCircle, Send } from "lucide-react";
+import { Home as HomeIcon, List, User, Settings as SettingsIcon, PlusCircle, MinusCircle, Send, Bell } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
@@ -12,6 +12,7 @@ import Settings from "./pages/Settings.jsx";
 import AddFunds from "./pages/AddFunds.jsx";
 import WithdrawFunds from "./pages/WithdrawFunds.jsx";
 import TransferFunds from "./pages/TransferFunds.jsx";
+import Notifications from "./pages/Notifications.jsx";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,11 @@ export const navItems = [
     to: "/transfer-funds",
     icon: <Send className="h-4 w-4" />,
   },
+  {
+    title: "Notifications",
+    to: "/notifications",
+    icon: <Bell className="h-4 w-4" />,
+  },
 ];
 
 const App = () => {
@@ -68,6 +74,7 @@ const App = () => {
               <Route path="add-funds" element={<AddFunds />} />
               <Route path="withdraw-funds" element={<WithdrawFunds />} />
               <Route path="transfer-funds" element={<TransferFunds />} />
+              <Route path="notifications" element={<Notifications />} />
             </Route>
           </Routes>
         </Router>
