@@ -5,7 +5,7 @@ import { Home as HomeIcon, Inbox, QrCode, Send, User } from "lucide-react";
 const Layout = () => {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between shadow-lg shadow-blue-500/50">
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-[#1e3a8a] px-4 md:px-6 justify-between shadow-lg shadow-blue-500/50">
         <MobileSidebar />
       </header>
       <div className="flex flex-grow">
@@ -14,7 +14,7 @@ const Layout = () => {
           <Outlet />
         </main>
       </div>
-      <footer className="sticky bottom-0 bg-background p-4 shadow-lg shadow-blue-500/50">
+      <footer className="sticky bottom-0 bg-[#1e3a8a] p-4 shadow-lg shadow-blue-500/50">
         <div className="flex justify-around">
           <button className="flex flex-col items-center text-white">
             <HomeIcon className="h-6 w-6" />

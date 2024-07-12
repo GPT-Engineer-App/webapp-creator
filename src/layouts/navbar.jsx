@@ -16,7 +16,7 @@ import { navItems } from "../App";
 const Layout = () => {
   return (
     <div className="flex min-h-screen w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between shadow-lg shadow-blue-500/50">
+      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-[#1e3a8a] px-4 md:px-6 justify-between shadow-lg shadow-blue-500/50">
         <DesktopNav />
         <MobileNav />
       </header>
