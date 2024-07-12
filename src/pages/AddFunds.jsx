@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { Toaster } from "@/components/ui/sonner";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import Modal from "@/components/ui/modal";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useNavigate } from "react-router-dom";
 
 const AddFunds = () => {
@@ -90,14 +90,18 @@ const AddFunds = () => {
         </Card>
       </main>
       {modalData && (
-        <Modal isOpen={!!modalData} onClose={() => setModalData(null)}>
-          <div className="p-4 space-y-4">
-            <h2 className="text-xl font-bold">Payment Information</h2>
-            <p>Amount: {modalData.amount}</p>
-            <p>Payment Method: {modalData.pay_method}</p>
-            <Button onClick={() => navigate("/payment-page", { state: { payUrl: modalData.pay_url } })} className="bg-green-500 text-white p-2 rounded-lg shadow-lg">Pay Now</Button>
-          </div>
-        </Modal>
+        <Dialog open={!!modalData} onOpenChange={() => setModalData(null)}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Payment Information</DialogTitle>
+            </DialogHeader>
+            <div className="p-4 space-y-4">
+              <p>Amount: {modalData.amount}</p>
+              <p>Payment Method: {modalData.pay_method}</p>
+              <Button onClick={() => navigate("/payment-page", { state: { payUrl: modalData.pay_url } })} className="bg-green-500 text-white p-2 rounded-lg shadow-lg">Pay Now</Button>
+            </div>
+          </DialogContent>
+        </Dialog>
       )}
     </div>
   );
