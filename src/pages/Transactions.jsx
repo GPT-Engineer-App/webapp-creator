@@ -3,6 +3,16 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 
 const Transactions = () => {
   const [search, setSearch] = useState('');
@@ -25,6 +35,11 @@ const Transactions = () => {
     );
   });
 
+  const chartData = transactions.map(transaction => ({
+    name: transaction.date,
+    amount: transaction.amount,
+  }));
+
   return (
     <div className="p-4">
       <header className="mb-4">
@@ -46,7 +61,7 @@ const Transactions = () => {
         </div>
       </header>
       <main>
-        <Card className="bg-white p-4 rounded-lg shadow-lg">
+        <Card className="bg-white p-4 rounded-lg shadow-lg mb-8">
           <CardContent>
             <ul>
               {filteredTransactions.map(transaction => (
@@ -58,6 +73,23 @@ const Transactions = () => {
                 </li>
               ))}
             </ul>
+          </CardContent>
+        </Card>
+        <Card className="bg-white p-4 rounded-lg shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-lg">Transaction Analytics</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Line type="monotone" dataKey="amount" stroke="#8884d8" activeDot={{ r: 8 }} />
+              </LineChart>
+            </ResponsiveContainer>
           </CardContent>
         </Card>
       </main>
