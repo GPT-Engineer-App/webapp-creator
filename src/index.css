@@ -75,7 +75,6 @@
   }
   h1, h2, h3, h4, h5, h6 {
     @apply text-[#4B0082]; /* Ensure title headers are dark purple */
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #4B0082, 0 0 30px #4B0082, 0 0 40px #4B0082, 0 0 55px #4B0082, 0 0 75px #4B0082;
     border: 1px solid #fff; /* Thin white border */
   }
   footer {
