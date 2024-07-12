@@ -53,7 +53,7 @@ const Transactions = () => {
             <SelectContent>
               <SelectItem value="">All Types</SelectItem>
               <SelectItem value="send">Send</SelectItem>
-              <SelectItem value="receive">Receive</SelectContent>
+              <SelectItem value="receive">Receive</SelectItem>
             </SelectContent>
           </Select>
           <Input type="number" placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} className="p-2 rounded-lg shadow-lg" />
