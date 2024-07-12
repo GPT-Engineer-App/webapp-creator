@@ -11,7 +11,7 @@ const Home = () => {
   ];
 
   return (
-    <div className="p-4 space-y-4">
+    <div className="p-4 space-y-4 flex flex-col min-h-screen">
       <header className="mb-4">
         <h1 className="text-2xl font-bold">Dashboard</h1>
         <Card className="bg-blue-500 text-white p-4 rounded-lg shadow-lg">
@@ -28,7 +28,7 @@ const Home = () => {
           </CardContent>
         </Card>
       </header>
-      <main>
+      <main className="flex-grow">
         <section className="mb-8">
           <Card className="bg-white p-4 rounded-lg shadow-lg">
             <CardHeader>
@@ -54,30 +54,6 @@ const Home = () => {
           </Card>
         </section>
       </main>
-      <footer className="sticky bottom-0 bg-white p-4 shadow-lg">
-        <div className="flex justify-around">
-          <Button variant="ghost" className="flex flex-col items-center">
-            <HomeIcon className="h-6 w-6" />
-            <span className="text-xs">Home</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col items-center">
-            <Inbox className="h-6 w-6" />
-            <span className="text-xs">Inbox</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col items-center">
-            <QrCode className="h-6 w-6" />
-            <span className="text-xs">QR</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col items-center">
-            <Send className="h-6 w-6" />
-            <span className="text-xs">Transactions</span>
-          </Button>
-          <Button variant="ghost" className="flex flex-col items-center">
-            <User className="h-6 w-6" />
-            <span className="text-xs">Profile</span>
-          </Button>
-        </div>
-      </footer>
     </div>
   );
 };
