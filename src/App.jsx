@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Home as HomeIcon, List, User, Settings as SettingsIcon, PlusCircle, MinusCircle, Send, Bell, HelpCircle } from "lucide-react";
+import { Home as HomeIcon, List, User, Settings as SettingsIcon, PlusCircle, MinusCircle, Send, Bell, HelpCircle, BarChart2 } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
@@ -15,6 +15,7 @@ import TransferFunds from "./pages/TransferFunds.jsx";
 import Notifications from "./pages/Notifications.jsx";
 import HelpSupport from "./pages/HelpSupport.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
+import Analytics from "./pages/Analytics.jsx";
 
 const queryClient = new QueryClient();
 
@@ -64,6 +65,11 @@ export const navItems = [
     to: "/help-support",
     icon: <HelpCircle className="h-4 w-4" />,
   },
+  {
+    title: "Analytics",
+    to: "/analytics",
+    icon: <BarChart2 className="h-4 w-4" />,
+  },
 ];
 
 const App = () => {
@@ -84,6 +90,7 @@ const App = () => {
               <Route path="notifications" element={<Notifications />} />
               <Route path="help-support" element={<HelpSupport />} />
               <Route path="payment-page" element={<PaymentPage />} />
+              <Route path="analytics" element={<Analytics />} />
             </Route>
           </Routes>
         </Router>
