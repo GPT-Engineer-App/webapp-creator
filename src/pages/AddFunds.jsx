@@ -5,14 +5,52 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
 import { Toaster } from "@/components/ui/sonner";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useNavigate } from "react-router-dom";
 
 const AddFunds = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const [paymentMethod, setPaymentMethod] = useState('');
+  const [modalData, setModalData] = useState(null);
+  const navigate = useNavigate();
 
-  const onSubmit = data => {
-    console.log(data);
-    Toaster.success('Funds added successfully!');
+  const addFundsMutation = useMutation(
+    async (data) => {
+      const response = await axios.post('https://api.nexuspay.cloud/payin/process', {
+        name: "Marc",
+        email: "admin@tmapp.live",
+        amount: data.amount,
+        pay_method: data.paymentMethod,
+        mobilenumber: "09182156660",
+        address: "Batangas ph",
+        webhook: "https://hooks.zapier.com/hooks/catch/16946926/3n5n63d",
+        remarks: `Marc deposit request on ${new Date().toLocaleString()}`
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer W6Bqqa2nhGmcWKFg5trryaaQjtOspejlo33Oep4='
+        }
+      });
+      return response.data;
+    },
+    {
+      onSuccess: (data) => {
+        setModalData(data);
+      },
+      onError: (error) => {
+        Toaster.error('Failed to add funds. Please try again.');
+      }
+    }
+  );
+
+  const onSubmit = (data) => {
+    if (data.paymentMethod !== 'sp-qrph') {
+      Toaster.error('Payment method not yet available.');
+      return;
+    }
+    addFundsMutation.mutate(data);
   };
 
   return (
@@ -39,6 +77,7 @@ const AddFunds = () => {
                     <SelectValue placeholder="Select payment method" />
                   </SelectTrigger>
                   <SelectContent>
+                    <SelectItem value="sp-qrph">QRPH</SelectItem>
                     <SelectItem value="credit-card">Credit Card</SelectItem>
                     <SelectItem value="paypal">PayPal</SelectItem>
                     <SelectItem value="bank-transfer">Bank Transfer</SelectItem>
@@ -50,6 +89,20 @@ const AddFunds = () => {
           </CardContent>
         </Card>
       </main>
+      {modalData && (
+        <Dialog open={!!modalData} onOpenChange={() => setModalData(null)}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Payment Information</DialogTitle>
+            </DialogHeader>
+            <div className="p-4 space-y-4">
+              <p>Amount: {modalData.amount}</p>
+              <p>Payment Method: {modalData.pay_method}</p>
+              <Button onClick={() => navigate("/payment-page", { state: { payUrl: modalData.pay_url } })} className="bg-green-500 text-white p-2 rounded-lg shadow-lg">Pay Now</Button>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 };

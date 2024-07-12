@@ -14,6 +14,7 @@ import WithdrawFunds from "./pages/WithdrawFunds.jsx";
 import TransferFunds from "./pages/TransferFunds.jsx";
 import Notifications from "./pages/Notifications.jsx";
 import HelpSupport from "./pages/HelpSupport.jsx";
+import PaymentPage from "./pages/PaymentPage.jsx";
 
 const queryClient = new QueryClient();
 
@@ -82,6 +83,7 @@ const App = () => {
               <Route path="transfer-funds" element={<TransferFunds />} />
               <Route path="notifications" element={<Notifications />} />
               <Route path="help-support" element={<HelpSupport />} />
+              <Route path="payment-page" element={<PaymentPage />} />
             </Route>
           </Routes>
         </Router>
