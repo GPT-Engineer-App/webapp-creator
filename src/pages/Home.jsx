@@ -14,9 +14,9 @@ const Home = () => {
           <CardContent>
             <p className="text-3xl">₱10,500.00</p>
             <div className="flex justify-around mt-4">
-              <Button className="bg-white text-blue-500 p-2 rounded-full shadow-lg">Deposit</Button>
-              <Button className="bg-white text-blue-500 p-2 rounded-full shadow-lg">Withdraw</Button>
-              <Button className="bg-white text-blue-500 p-2 rounded-full shadow-lg">Transfer</Button>
+              <Button className="bg-gray-800 text-white p-2 rounded-lg shadow-lg">Deposit</Button>
+              <Button className="bg-gray-800 text-white p-2 rounded-lg shadow-lg">Withdraw</Button>
+              <Button className="bg-gray-800 text-white p-2 rounded-lg shadow-lg">Transfer</Button>
             </div>
           </CardContent>
         </Card>
