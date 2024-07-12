@@ -4,16 +4,15 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useForm } from "react-hook-form";
-import { useToaster } from "@/components/ui/sonner";
+import { toast } from "@/components/ui/sonner";
 
 const AddFunds = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const toaster = useToaster();
   const [paymentMethod, setPaymentMethod] = useState('');
 
   const onSubmit = data => {
     console.log(data);
-    toaster.success('Funds added successfully!');
+    toast.success('Funds added successfully!');
   };
 
   return (
