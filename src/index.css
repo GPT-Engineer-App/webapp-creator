@@ -71,6 +71,6 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#e0e7ff] text-foreground; /* Updated background color */
+    @apply bg-[#1e3a8a] text-foreground; /* Updated background color to dark blue */
   }
 }
