@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Sidebar, MobileSidebar } from "./sidebar";
-import { Home as HomeIcon, Inbox, QrCode, Send, User } from "lucide-react";
+import { Home as HomeIcon, Inbox, QrCode, Send, User, Bell } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Layout = () => {
   return (
@@ -10,6 +11,9 @@ const Layout = () => {
         <div className="flex-grow flex justify-center">
           <img src="/images/header-logo.png" alt="Header Logo" className="h-12" />
         </div>
+        <Button variant="ghost" size="icon" className="text-white">
+          <Bell className="h-6 w-6" />
+        </Button>
       </header>
       <div className="flex flex-grow">
         <Sidebar />
