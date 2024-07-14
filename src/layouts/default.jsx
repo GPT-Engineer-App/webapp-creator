@@ -2,10 +2,11 @@ import { Outlet } from "react-router-dom";
 import { Sidebar, MobileSidebar } from "./sidebar";
 import { Home as HomeIcon, Inbox, QrCode, Send, User, Bell, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 const Layout = ({ theme, setTheme }) => {
-  const toggleTheme = () => {
-    setTheme(theme === 'default' ? 'white' : 'default');
+  const handleThemeChange = (value) => {
+    setTheme(value);
   };
 
   return (
@@ -16,9 +17,16 @@ const Layout = ({ theme, setTheme }) => {
           <img src="/images/header-logo.png" alt="Header Logo" className="h-12" />
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === 'default' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-          </Button>
+          <Select onValueChange={handleThemeChange} value={theme}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Select theme" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="light">Light Theme</SelectItem>
+              <SelectItem value="blue">Blue Theme</SelectItem>
+              <SelectItem value="dark">Dark Theme</SelectItem>
+            </SelectContent>
+          </Select>
           <Button variant="ghost" size="icon">
             <Bell className="h-6 w-6" />
           </Button>
