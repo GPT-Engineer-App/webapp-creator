@@ -4,7 +4,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Home as HomeIcon, List, User, Settings as SettingsIcon, PlusCircle, MinusCircle, Send, Bell, HelpCircle, BarChart2 } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Layout from "./layouts/default"; // available: default, navbar, sidebar
-import Index from "./pages/Index.jsx";
+import Landingpage from "./pages/Landingpage.jsx";
 import Home from "./pages/Home.jsx";
 import Transactions from "./pages/Transactions.jsx";
 import Profile from "./pages/Profile.jsx";
@@ -84,7 +84,7 @@ const App = () => {
           <div className={theme === 'white' ? 'white-theme' : ''}>
             <Routes>
               <Route path="/" element={<Layout theme={theme} setTheme={setTheme} />}>
-                <Route index element={<Index />} />
+                <Route index element={<Landingpage />} />
                 <Route path="home" element={<Home />} />
                 <Route path="transactions" element={<Transactions />} />
                 <Route path="profile" element={<Profile />} />
