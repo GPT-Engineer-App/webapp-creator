@@ -3,7 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Home as HomeIcon, List, User, Settings as SettingsIcon, PlusCircle, MinusCircle, Send, Bell, HelpCircle, BarChart2 } from "lucide-react";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Layout from "./layouts/default";
+import Layout from "./layouts/default"; // available: default, navbar, sidebar
 import Index from "./pages/Index.jsx";
 import Home from "./pages/Home.jsx";
 import Transactions from "./pages/Transactions.jsx";
@@ -74,14 +74,14 @@ export const navItems = [
 ];
 
 const App = () => {
-  const [theme, setTheme] = useState('blue');
+  const [theme, setTheme] = useState('default');
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Router>
-          <div className={`theme-${theme}`}>
+          <div className={theme === 'white' ? 'white-theme' : ''}>
             <Routes>
               <Route path="/" element={<Layout theme={theme} setTheme={setTheme} />}>
                 <Route index element={<Index />} />
