@@ -24,7 +24,7 @@ const Layout = ({ theme, setTheme }) => {
         <MobileSidebar />
         <div className="flex-grow flex justify-center items-center">
           <img src="/images/app-logo.png" alt="App Logo" className="h-10 mr-2" />
-          <span className="text-xl font-bold">platapay</span>
+          <span className="text-xl font-bold platapay-text">Platapay</span>
         </div>
         <div className="flex items-center gap-2">
           <DropdownMenu open={isThemeMenuOpen} onOpenChange={setIsThemeMenuOpen}>

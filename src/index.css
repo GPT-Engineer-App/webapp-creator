@@ -129,3 +129,20 @@
 .white-theme .button {
   @apply bg-blue-500 text-white hover:bg-blue-600;
 }
+
+.platapay-text {
+  background: linear-gradient(to right, #c0c0c0, #e8e8e8, #c0c0c0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 2s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
