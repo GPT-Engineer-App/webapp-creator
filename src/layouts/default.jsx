@@ -8,13 +8,22 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Layout = ({ theme, setTheme }) => {
+const Layout = () => {
+  const [theme, setTheme] = useState('light');
   const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+  }, []);
 
   const toggleTheme = (newTheme) => {
     setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
     setIsThemeMenuOpen(false);
   };
 
@@ -30,17 +39,16 @@ const Layout = ({ theme, setTheme }) => {
           <DropdownMenu open={isThemeMenuOpen} onOpenChange={setIsThemeMenuOpen}>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon">
-                {theme === 'default' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+                {theme === 'light' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => toggleTheme('default')}>
-                Default Theme
+              <DropdownMenuItem onClick={() => toggleTheme('light')}>
+                Light Theme
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => toggleTheme('white')}>
-                White Theme
+              <DropdownMenuItem onClick={() => toggleTheme('dark')}>
+                Dark Theme
               </DropdownMenuItem>
-              {/* Add more theme options here */}
             </DropdownMenuContent>
           </DropdownMenu>
           <Button variant="ghost" size="icon">
