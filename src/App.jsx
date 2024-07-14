@@ -16,6 +16,7 @@ import Notifications from "./pages/Notifications.jsx";
 import HelpSupport from "./pages/HelpSupport.jsx";
 import PaymentPage from "./pages/PaymentPage.jsx";
 import Analytics from "./pages/Analytics.jsx";
+import { useState } from "react";
 
 const queryClient = new QueryClient();
 
@@ -73,27 +74,31 @@ export const navItems = [
 ];
 
 const App = () => {
+  const [theme, setTheme] = useState('default');
+
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Router>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-              <Route index element={<Index />} />
-              <Route path="home" element={<Home />} />
-              <Route path="transactions" element={<Transactions />} />
-              <Route path="profile" element={<Profile />} />
-              <Route path="settings" element={<Settings />} />
-              <Route path="add-funds" element={<AddFunds />} />
-              <Route path="withdraw-funds" element={<WithdrawFunds />} />
-              <Route path="transfer-funds" element={<TransferFunds />} />
-              <Route path="notifications" element={<Notifications />} />
-              <Route path="help-support" element={<HelpSupport />} />
-              <Route path="payment-page" element={<PaymentPage />} />
-              <Route path="analytics" element={<Analytics />} />
-            </Route>
-          </Routes>
+          <div className={theme === 'white' ? 'white-theme' : ''}>
+            <Routes>
+              <Route path="/" element={<Layout theme={theme} setTheme={setTheme} />}>
+                <Route index element={<Index />} />
+                <Route path="home" element={<Home />} />
+                <Route path="transactions" element={<Transactions />} />
+                <Route path="profile" element={<Profile />} />
+                <Route path="settings" element={<Settings />} />
+                <Route path="add-funds" element={<AddFunds />} />
+                <Route path="withdraw-funds" element={<WithdrawFunds />} />
+                <Route path="transfer-funds" element={<TransferFunds />} />
+                <Route path="notifications" element={<Notifications />} />
+                <Route path="help-support" element={<HelpSupport />} />
+                <Route path="payment-page" element={<PaymentPage />} />
+                <Route path="analytics" element={<Analytics />} />
+              </Route>
+            </Routes>
+          </div>
         </Router>
       </TooltipProvider>
     </QueryClientProvider>

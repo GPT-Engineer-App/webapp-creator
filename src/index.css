@@ -64,6 +64,38 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  .white-theme {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 210 100% 50%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 330 100% 50%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 50 100% 50%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+  }
 }
  
 @layer base {
@@ -71,13 +103,29 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#1e3a8a] text-foreground; /* Updated background color to dark blue */
+    @apply bg-background text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply text-[#4B0082]; /* Ensure title headers are dark purple */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Glowing effect */
+    @apply text-primary;
   }
   footer {
-    @apply border-t-2 border-white; /* Add white border to footer */
+    @apply border-t-2 border-primary;
   }
+}
+
+.white-theme {
+  @apply bg-white text-gray-900;
+}
+
+.white-theme header,
+.white-theme footer {
+  @apply bg-white text-gray-900 shadow-md;
+}
+
+.white-theme .card {
+  @apply bg-white text-gray-900 shadow-md;
+}
+
+.white-theme .button {
+  @apply bg-blue-500 text-white hover:bg-blue-600;
 }
