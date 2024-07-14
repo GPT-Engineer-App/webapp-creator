@@ -84,13 +84,27 @@ const ThreeDAnimation = () => {
 
     animate();
 
+    // Resize handler
+    const handleResize = () => {
+      const width = mount.clientWidth;
+      const height = mount.clientHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+    };
+
+    window.addEventListener('resize', handleResize);
+
     // Cleanup
     return () => {
+      window.removeEventListener('resize', handleResize);
       mount.removeChild(renderer.domElement);
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: '100%', height: '500px' }} />;
+  return <div ref={mountRef} style={{ width: '100%', height: '400px' }} />;
 };
 
 export default ThreeDAnimation;
