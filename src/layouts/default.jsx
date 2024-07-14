@@ -13,7 +13,7 @@ const Layout = ({ theme, setTheme }) => {
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between shadow-lg">
         <MobileSidebar />
         <div className="flex-grow flex justify-center">
-          <img src="/images/header-logo.png" alt="Header Logo" className="h-12" />
+          <img src="/images/app-logo.png" alt="App Logo" className="h-12" />
         </div>
         <div className="flex items-center gap-2">
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
