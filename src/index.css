@@ -146,3 +146,20 @@
     background-position: 200% center;
   }
 }
+
+.radiant-black-text {
+  color: #000;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  animation: radiantPulse 3s ease-in-out infinite;
+}
+
+@keyframes radiantPulse {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(50, 50, 50, 0.8),
+                 0 0 30px rgba(100, 100, 100, 0.6),
+                 0 0 40px rgba(150, 150, 150, 0.4);
+  }
+}
