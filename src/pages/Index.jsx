@@ -14,11 +14,13 @@ const Index = () => {
           <CardTitle className="text-center text-3xl">Welcome to the E-Wallet App</CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col items-center space-y-4">
-          <p className="text-center">Use the navigation menu to explore the app.</p>
+          <p className="text-center">Experience our vibrant 3D animation below!</p>
           <Button onClick={() => navigate("/home")}>Go to Dashboard</Button>
         </CardContent>
       </Card>
-      <ThreeDAnimation />
+      <div className="w-full max-w-3xl">
+        <ThreeDAnimation />
+      </div>
     </div>
   );
 };
