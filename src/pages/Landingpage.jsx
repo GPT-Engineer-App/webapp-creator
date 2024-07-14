@@ -3,19 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useNavigate } from "react-router-dom";
 import ThreeDAnimation from "@/components/ThreeDAnimation";
-import PlatapayEmblem from "@/components/PlatapayEmblem";
 
 const Index = () => {
   const navigate = useNavigate();
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-primary to-primary-dark">
-      <header className="py-8 relative">
+      <header className="py-8">
         <div className="container mx-auto text-center">
-          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
-            <PlatapayEmblem />
-          </div>
-          <h1 className="text-4xl font-bold mb-4 text-white mt-24">Welcome to PlataPay</h1>
+          <h1 className="text-4xl font-bold mb-4 text-white">Welcome to PlataPay</h1>
           <p className="text-xl text-white">Your Trusted Payment Solution in the Philippines</p>
         </div>
       </header>
