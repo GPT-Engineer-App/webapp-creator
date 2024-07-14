@@ -2,23 +2,47 @@ import { Outlet } from "react-router-dom";
 import { Sidebar, MobileSidebar } from "./sidebar";
 import { Home as HomeIcon, Inbox, QrCode, Send, User, Bell, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { useState } from "react";
 
 const Layout = ({ theme, setTheme }) => {
-  const toggleTheme = () => {
-    setTheme(theme === 'default' ? 'white' : 'default');
+  const [isThemeMenuOpen, setIsThemeMenuOpen] = useState(false);
+
+  const toggleTheme = (newTheme) => {
+    setTheme(newTheme);
+    setIsThemeMenuOpen(false);
   };
 
   return (
     <div className="flex min-h-screen flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 justify-between shadow-lg">
         <MobileSidebar />
-        <div className="flex-grow flex justify-center">
-          <img src="/images/app-logo.png" alt="App Logo" className="h-14" /> {/* Adjusted height to match header */}
+        <div className="flex-grow flex justify-center items-center">
+          <img src="/images/app-logo.png" alt="App Logo" className="h-10 mr-2" />
+          <span className="text-xl font-bold">platapay</span>
         </div>
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" onClick={toggleTheme}>
-            {theme === 'default' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
-          </Button>
+          <DropdownMenu open={isThemeMenuOpen} onOpenChange={setIsThemeMenuOpen}>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                {theme === 'default' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuItem onClick={() => toggleTheme('default')}>
+                Default Theme
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => toggleTheme('white')}>
+                White Theme
+              </DropdownMenuItem>
+              {/* Add more theme options here */}
+            </DropdownMenuContent>
+          </DropdownMenu>
           <Button variant="ghost" size="icon">
             <Bell className="h-6 w-6" />
           </Button>
