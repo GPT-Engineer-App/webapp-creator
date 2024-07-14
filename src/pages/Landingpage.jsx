@@ -10,10 +10,12 @@ const Index = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-b from-primary to-primary-dark">
-      <header className="py-8">
+      <header className="py-8 relative">
         <div className="container mx-auto text-center">
-          <PlatapayEmblem />
-          <h1 className="text-4xl font-bold mb-4 text-white mt-4">Welcome to PlataPay</h1>
+          <div className="absolute top-0 left-1/2 transform -translate-x-1/2 z-10">
+            <PlatapayEmblem />
+          </div>
+          <h1 className="text-4xl font-bold mb-4 text-white mt-24">Welcome to PlataPay</h1>
           <p className="text-xl text-white">Your Trusted Payment Solution in the Philippines</p>
         </div>
       </header>
